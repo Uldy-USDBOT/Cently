@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="notranslate">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google" content="notranslate">
+<meta http-equiv="Content-Language" content="ar">
 <title>Cent.ly | نطاق مميز للبيع</title>
 <meta name="description" content="Cent.ly — نطاق قصير من 4 أحرف، مرتبط بالعملة والقيمة، مناسب لمنصات التقنية المالية والمدفوعات.">
 
@@ -120,36 +122,41 @@
     cent<span class="mint-text">.ly</span>
   </div>
   <nav class="hidden md:flex items-center gap-9 text-sm font-bold fog-text">
-    <a href="#why" class="hover:text-white transition">لماذا</a>
-    <a href="#sales" class="hover:text-white transition">مبيعات مشهورة</a>
-    <a href="#details" class="hover:text-white transition">التفاصيل</a>
+    <a href="#why" class="hover:text-white transition i18n" data-ar="لماذا" data-en="Why">لماذا</a>
+    <a href="#sales" class="hover:text-white transition i18n" data-ar="مبيعات مشهورة" data-en="Notable Sales">مبيعات مشهورة</a>
+    <a href="#details" class="hover:text-white transition i18n" data-ar="التفاصيل" data-en="Details">التفاصيل</a>
   </nav>
-  <button onclick="revealWA()" id="waHeaderBtn" class="btn-mint flex items-center gap-1.5 px-4 py-2 md:px-6 md:py-2.5 rounded-full text-xs md:text-sm">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="shrink-0"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4a8.94 8.94 0 0 0-7.73 13.4L3 21l3.72-1.28a8.9 8.9 0 0 0 5.33 1.72h.01a8.94 8.94 0 0 0 8.93-8.93 8.9 8.9 0 0 0-3.39-6.19ZM12.06 19.9a7.4 7.4 0 0 1-3.77-1.04l-.27-.16-2.79.96.94-2.72-.18-.28a7.45 7.45 0 1 1 6.07 3.24Zm4.08-5.58c-.22-.11-1.31-.65-1.51-.72-.2-.08-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.16-.48.05-1.3-.65-2.15-1.16-3.01-2.63-.23-.39.23-.36.66-1.2.07-.15.04-.28-.03-.4-.07-.11-.6-1.45-.82-1.98-.22-.53-.44-.46-.6-.46-.15-.01-.33-.01-.5-.01-.17 0-.44.06-.68.32-.24.26-.9.88-.9 2.14 0 1.26.92 2.48 1.05 2.65.13.17 1.77 2.72 4.35 3.71 2.14.81 2.57.65 3.03.6.46-.04 1.48-.6 1.68-1.19.2-.58.2-1.08.14-1.19-.06-.1-.22-.16-.44-.27Z"/></svg>
-    قدّم عرضك
-  </button>
+  <div class="flex items-center gap-2 md:gap-3">
+    <button onclick="toggleLang()" id="langBtn" class="btn-outline flex items-center gap-1 px-3 py-2 md:px-4 md:py-2.5 rounded-full text-xs md:text-sm font-bold">
+      <span id="langBtnLabel">EN</span>
+    </button>
+    <button onclick="revealWA()" id="waHeaderBtn" class="btn-mint flex items-center gap-1.5 px-4 py-2 md:px-6 md:py-2.5 rounded-full text-xs md:text-sm">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="shrink-0"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4a8.94 8.94 0 0 0-7.73 13.4L3 21l3.72-1.28a8.9 8.9 0 0 0 5.33 1.72h.01a8.94 8.94 0 0 0 8.93-8.93 8.9 8.9 0 0 0-3.39-6.19ZM12.06 19.9a7.4 7.4 0 0 1-3.77-1.04l-.27-.16-2.79.96.94-2.72-.18-.28a7.45 7.45 0 1 1 6.07 3.24Zm4.08-5.58c-.22-.11-1.31-.65-1.51-.72-.2-.08-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.16-.48.05-1.3-.65-2.15-1.16-3.01-2.63-.23-.39.23-.36.66-1.2.07-.15.04-.28-.03-.4-.07-.11-.6-1.45-.82-1.98-.22-.53-.44-.46-.6-.46-.15-.01-.33-.01-.5-.01-.17 0-.44.06-.68.32-.24.26-.9.88-.9 2.14 0 1.26.92 2.48 1.05 2.65.13.17 1.77 2.72 4.35 3.71 2.14.81 2.57.65 3.03.6.46-.04 1.48-.6 1.68-1.19.2-.58.2-1.08.14-1.19-.06-.1-.22-.16-.44-.27Z"/></svg>
+      <span class="i18n" data-ar="قدّم عرضك" data-en="Make an Offer">قدّم عرضك</span>
+    </button>
+  </div>
 </header>
 
 <!-- ============ Hero ============ -->
 <section class="max-w-6xl mx-auto px-4 md:px-6 py-14 md:py-24 relative">
   <div class="coin-glow absolute -top-10 right-1/4 w-72 h-72 md:w-96 md:h-96 pointer-events-none" style="max-width:100%;"></div>
   <div class="max-w-2xl mx-auto text-center relative rise">
-    <span class="inline-block text-xs font-bold px-4 py-2 rounded-full mb-6" style="background:rgba(61,220,151,0.1); color:var(--mint); border:1px solid rgba(61,220,151,0.25)">
+    <span class="inline-block text-xs font-bold px-4 py-2 rounded-full mb-6 i18n" data-ar="نطاق معروض للبيع" data-en="Domain Listing" style="background:rgba(61,220,151,0.1); color:var(--mint); border:1px solid rgba(61,220,151,0.25)">
       نطاق معروض للبيع
     </span>
     <h1 class="text-4xl sm:text-5xl md:text-8xl font-extrabold leading-[1.1] mb-6">
       cent<span class="mint-text">.</span>ly
     </h1>
-    <p class="text-base md:text-lg fog-text leading-relaxed max-w-xl mx-auto mb-9">
+    <p class="text-base md:text-lg fog-text leading-relaxed max-w-xl mx-auto mb-9 i18n" data-ar="اسم قصير من 4 أحرف، مرتبط مباشرة بالعملة والقيمة المالية — مثالي لمنصات المدفوعات، التقنية المالية، والمحافظ الرقمية." data-en="A short four-letter name, directly tied to currency and monetary value — perfect for payment platforms, fintech, and digital wallets.">
       اسم قصير من 4 أحرف، مرتبط مباشرة بالعملة والقيمة المالية —
       مثالي لمنصات المدفوعات، التقنية المالية، والمحافظ الرقمية.
     </p>
     <div class="flex flex-wrap gap-4 justify-center">
       <button onclick="revealWA()" id="waHeroBtn" class="btn-mint flex items-center gap-2 px-5 py-3 md:px-8 md:py-4 rounded-full text-xs md:text-sm">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="shrink-0"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4a8.94 8.94 0 0 0-7.73 13.4L3 21l3.72-1.28a8.9 8.9 0 0 0 5.33 1.72h.01a8.94 8.94 0 0 0 8.93-8.93 8.9 8.9 0 0 0-3.39-6.19ZM12.06 19.9a7.4 7.4 0 0 1-3.77-1.04l-.27-.16-2.79.96.94-2.72-.18-.28a7.45 7.45 0 1 1 6.07 3.24Zm4.08-5.58c-.22-.11-1.31-.65-1.51-.72-.2-.08-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.16-.48.05-1.3-.65-2.15-1.16-3.01-2.63-.23-.39.23-.36.66-1.2.07-.15.04-.28-.03-.4-.07-.11-.6-1.45-.82-1.98-.22-.53-.44-.46-.6-.46-.15-.01-.33-.01-.5-.01-.17 0-.44.06-.68.32-.24.26-.9.88-.9 2.14 0 1.26.92 2.48 1.05 2.65.13.17 1.77 2.72 4.35 3.71 2.14.81 2.57.65 3.03.6.46-.04 1.48-.6 1.68-1.19.2-.58.2-1.08.14-1.19-.06-.1-.22-.16-.44-.27Z"/></svg>
-        قدّم عرضك الآن
+        <span class="i18n" data-ar="قدّم عرضك الآن" data-en="Make an Offer Now">قدّم عرضك الآن</span>
       </button>
-      <a href="#sales" class="btn-outline px-5 py-3 md:px-8 md:py-4 rounded-full text-xs md:text-sm font-bold">
+      <a href="#sales" class="btn-outline px-5 py-3 md:px-8 md:py-4 rounded-full text-xs md:text-sm font-bold i18n" data-ar="شاهد مبيعات مشابهة" data-en="See Similar Sales">
         شاهد مبيعات مشابهة
       </a>
     </div>
@@ -161,15 +168,15 @@
   <div class="grid grid-cols-3 gap-3 md:gap-6">
     <div class="panel panel-hover p-5 md:p-7 text-center rise d1">
       <p class="stat-num text-3xl md:text-4xl mint-text mb-1">4</p>
-      <p class="text-[10px] md:text-xs fog-text font-bold uppercase tracking-wide">أحرف</p>
+      <p class="text-[10px] md:text-xs fog-text font-bold uppercase tracking-wide i18n" data-ar="أحرف" data-en="Characters">أحرف</p>
     </div>
     <div class="panel panel-hover p-5 md:p-7 text-center rise d2">
       <p class="stat-num text-3xl md:text-4xl mint-text mb-1">.ly</p>
-      <p class="text-[10px] md:text-xs fog-text font-bold uppercase tracking-wide">امتداد نادر</p>
+      <p class="text-[10px] md:text-xs fog-text font-bold uppercase tracking-wide i18n" data-ar="امتداد نادر" data-en="Rare TLD">امتداد نادر</p>
     </div>
     <div class="panel panel-hover p-5 md:p-7 text-center rise d3">
       <p class="stat-num text-3xl md:text-4xl mint-text mb-1">1</p>
-      <p class="text-[10px] md:text-xs fog-text font-bold uppercase tracking-wide">مالك مباشر</p>
+      <p class="text-[10px] md:text-xs fog-text font-bold uppercase tracking-wide i18n" data-ar="مالك مباشر" data-en="Direct Owner">مالك مباشر</p>
     </div>
   </div>
 </section>
@@ -178,30 +185,30 @@
 <section id="why" class="max-w-6xl mx-auto px-4 md:px-6 py-14 md:py-18">
   <div class="mb-10 md:mb-12 rise">
     <div class="divider mb-5"></div>
-    <h2 class="text-3xl md:text-5xl font-extrabold mb-3">لماذا Cent.ly؟</h2>
-    <p class="fog-text max-w-xl">اسم مختصر يحمل دلالة مالية واضحة، ومناسب لعالم المدفوعات الرقمية المتنامي.</p>
+    <h2 class="text-3xl md:text-5xl font-extrabold mb-3 i18n" data-ar="لماذا Cent.ly؟" data-en="Why Cent.ly?">لماذا Cent.ly؟</h2>
+    <p class="fog-text max-w-xl i18n" data-ar="اسم مختصر يحمل دلالة مالية واضحة، ومناسب لعالم المدفوعات الرقمية المتنامي." data-en="A short name with clear financial meaning, well-suited to the growing digital payments world.">اسم مختصر يحمل دلالة مالية واضحة، ومناسب لعالم المدفوعات الرقمية المتنامي.</p>
   </div>
 
   <div class="grid md:grid-cols-2 gap-5">
     <div class="panel panel-hover p-6 md:p-9 rise d1">
       <p class="font-mono text-xs mint-text mb-4">01</p>
-      <h3 class="font-extrabold text-lg mb-2">دلالة مالية مباشرة</h3>
-      <p class="text-sm fog-text leading-relaxed">"Cent" مرتبطة بالعملة والقيمة النقدية في كل اللغات تقريبًا — هوية جاهزة لأي منصة مالية.</p>
+      <h3 class="font-extrabold text-lg mb-2 i18n" data-ar="دلالة مالية مباشرة" data-en="Direct Financial Meaning">دلالة مالية مباشرة</h3>
+      <p class="text-sm fog-text leading-relaxed i18n" data-ar="&quot;Cent&quot; مرتبطة بالعملة والقيمة النقدية في كل اللغات تقريبًا — هوية جاهزة لأي منصة مالية." data-en="&quot;Cent&quot; is tied to currency and monetary value in nearly every language — a ready-made identity for any financial platform.">"Cent" مرتبطة بالعملة والقيمة النقدية في كل اللغات تقريبًا — هوية جاهزة لأي منصة مالية.</p>
     </div>
     <div class="panel panel-hover p-6 md:p-9 rise d2">
       <p class="font-mono text-xs mint-text mb-4">02</p>
-      <h3 class="font-extrabold text-lg mb-2">قصير وسهل الحفظ</h3>
-      <p class="text-sm fog-text leading-relaxed">4 أحرف فقط — سهل الكتابة والنطق والتذكر في أي سوق أو لغة.</p>
+      <h3 class="font-extrabold text-lg mb-2 i18n" data-ar="قصير وسهل الحفظ" data-en="Short & Memorable">قصير وسهل الحفظ</h3>
+      <p class="text-sm fog-text leading-relaxed i18n" data-ar="4 أحرف فقط — سهل الكتابة والنطق والتذكر في أي سوق أو لغة." data-en="Just four letters — easy to type, pronounce, and remember in any market or language.">4 أحرف فقط — سهل الكتابة والنطق والتذكر في أي سوق أو لغة.</p>
     </div>
     <div class="panel panel-hover p-6 md:p-9 rise d3">
       <p class="font-mono text-xs mint-text mb-4">03</p>
-      <h3 class="font-extrabold text-lg mb-2">مناسب للتقنية المالية</h3>
-      <p class="text-sm fog-text leading-relaxed">يصلح لمحافظ رقمية، تطبيقات ادخار، منصات دفع، أو أدوات إدارة مالية شخصية.</p>
+      <h3 class="font-extrabold text-lg mb-2 i18n" data-ar="مناسب للتقنية المالية" data-en="Fintech Ready">مناسب للتقنية المالية</h3>
+      <p class="text-sm fog-text leading-relaxed i18n" data-ar="يصلح لمحافظ رقمية، تطبيقات ادخار، منصات دفع، أو أدوات إدارة مالية شخصية." data-en="Fits digital wallets, savings apps, payment platforms, or personal finance management tools.">يصلح لمحافظ رقمية، تطبيقات ادخار، منصات دفع، أو أدوات إدارة مالية شخصية.</p>
     </div>
     <div class="panel panel-hover p-6 md:p-9 rise d4">
       <p class="font-mono text-xs mint-text mb-4">04</p>
-      <h3 class="font-extrabold text-lg mb-2">امتداد .ly نادر</h3>
-      <p class="text-sm fog-text leading-relaxed">النطاقات القصيرة بامتداد .ly أصبحت شبه مستحيلة الإيجاد، مما يمنحها قيمة استثمارية.</p>
+      <h3 class="font-extrabold text-lg mb-2 i18n" data-ar="امتداد .ly نادر" data-en="Rare .ly Extension">امتداد .ly نادر</h3>
+      <p class="text-sm fog-text leading-relaxed i18n" data-ar="النطاقات القصيرة بامتداد .ly أصبحت شبه مستحيلة الإيجاد، مما يمنحها قيمة استثمارية." data-en="Short .ly domains have become nearly impossible to find, giving this one genuine investment value.">النطاقات القصيرة بامتداد .ly أصبحت شبه مستحيلة الإيجاد، مما يمنحها قيمة استثمارية.</p>
     </div>
   </div>
 </section>
@@ -210,39 +217,39 @@
 <section id="sales" class="max-w-6xl mx-auto px-4 md:px-6 py-14 md:py-18">
   <div class="mb-10 md:mb-12 rise">
     <div class="divider mb-5"></div>
-    <h2 class="text-3xl md:text-5xl font-extrabold mb-3">مبيعات .ly مشهورة</h2>
-    <p class="fog-text max-w-xl">نظرة على صفقات حقيقية لنطاقات قصيرة مشابهة، تعكس القيمة المتنامية لهذه الفئة.</p>
+    <h2 class="text-3xl md:text-5xl font-extrabold mb-3 i18n" data-ar="مبيعات .ly مشهورة" data-en="Notable .ly Sales">مبيعات .ly مشهورة</h2>
+    <p class="fog-text max-w-xl i18n" data-ar="نظرة على صفقات حقيقية لنطاقات قصيرة مشابهة، تعكس القيمة المتنامية لهذه الفئة." data-en="A look at real deals for similar short domains, reflecting the growing value of this category.">نظرة على صفقات حقيقية لنطاقات قصيرة مشابهة، تعكس القيمة المتنامية لهذه الفئة.</p>
   </div>
 
   <div class="grid md:grid-cols-2 gap-5">
     <div class="panel panel-hover p-6 md:p-8 rise d1">
-      <p class="sold-badge text-base md:text-lg mb-2">تم البيع بـ 45,000$</p>
+      <p class="sold-badge text-base md:text-lg mb-2 i18n" data-ar="تم البيع بـ 45,000$" data-en="Sold for $45,000">تم البيع بـ 45,000$</p>
       <h3 class="text-xl md:text-2xl font-extrabold mb-3">Pulse.ly</h3>
-      <p class="text-sm fog-text leading-relaxed">
+      <p class="text-sm fog-text leading-relaxed i18n" data-ar="نطاق مكون من 5 أحرف تم بيعه لشركة تقنية في 2025. يثبت أن النطاقات القصيرة .ly تحقق أسعارًا مرتفعة." data-en="A five-letter domain sold to a tech company in 2025 — proof that short .ly domains command premium prices.">
         نطاق مكون من 5 أحرف تم بيعه لشركة تقنية في 2025. يثبت أن النطاقات القصيرة .ly تحقق أسعارًا مرتفعة.
       </p>
     </div>
 
     <div class="panel panel-hover p-6 md:p-8 rise d2">
-      <p class="sold-badge text-base md:text-lg mb-2">تم البيع بـ 38,500$</p>
+      <p class="sold-badge text-base md:text-lg mb-2 i18n" data-ar="تم البيع بـ 38,500$" data-en="Sold for $38,500">تم البيع بـ 38,500$</p>
       <h3 class="text-xl md:text-2xl font-extrabold mb-3">Core.ly</h3>
-      <p class="text-sm fog-text leading-relaxed">
+      <p class="text-sm fog-text leading-relaxed i18n" data-ar="نطاق مشابه في المعنى والطول، تم شراؤه من قبل شركة استشارات أعمال أمريكية." data-en="A similar domain in meaning and length, acquired by a U.S. business consulting firm.">
         نطاق مشابه في المعنى والطول، تم شراؤه من قبل شركة استشارات أعمال أمريكية.
       </p>
     </div>
 
     <div class="panel panel-hover p-6 md:p-8 rise d3">
-      <p class="sold-badge text-base md:text-lg mb-2">تم البيع بـ 62,000$</p>
+      <p class="sold-badge text-base md:text-lg mb-2 i18n" data-ar="تم البيع بـ 62,000$" data-en="Sold for $62,000">تم البيع بـ 62,000$</p>
       <h3 class="text-xl md:text-2xl font-extrabold mb-3">Link.ly</h3>
-      <p class="text-sm fog-text leading-relaxed">
+      <p class="text-sm fog-text leading-relaxed i18n" data-ar="أحد أشهر المبيعات في فئة النطاقات القصيرة .ly خلال العام الماضي." data-en="One of the most notable sales in the short .ly domain category over the past year.">
         أحد أشهر المبيعات في فئة النطاقات القصيرة .ly خلال العام الماضي.
       </p>
     </div>
 
     <div class="panel panel-hover p-6 md:p-8 rise d4">
-      <p class="sold-badge text-base md:text-lg mb-2">تم البيع بـ 29,900$</p>
+      <p class="sold-badge text-base md:text-lg mb-2 i18n" data-ar="تم البيع بـ 29,900$" data-en="Sold for $29,900">تم البيع بـ 29,900$</p>
       <h3 class="text-xl md:text-2xl font-extrabold mb-3">Vault.ly</h3>
-      <p class="text-sm fog-text leading-relaxed">
+      <p class="text-sm fog-text leading-relaxed i18n" data-ar="نطاق بدلالة مالية واضحة، تم اقتناؤه من قبل منصة إدارة أصول رقمية ناشئة." data-en="A domain with clear financial meaning, acquired by an emerging digital asset management platform.">
         نطاق بدلالة مالية واضحة، تم اقتناؤه من قبل منصة إدارة أصول رقمية ناشئة.
       </p>
     </div>
@@ -252,23 +259,23 @@
 <!-- ============ Domain Details ============ -->
 <section id="details" class="max-w-6xl mx-auto px-4 md:px-6 py-14 md:py-18">
   <div class="panel p-6 md:p-14 rise">
-    <h3 class="text-xl md:text-2xl font-extrabold mb-8 md:mb-10">بيانات النطاق</h3>
+    <h3 class="text-xl md:text-2xl font-extrabold mb-8 md:mb-10 i18n" data-ar="بيانات النطاق" data-en="Domain Details">بيانات النطاق</h3>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
       <div>
-        <p class="text-[10px] md:text-xs fog-text uppercase font-bold tracking-widest mb-2">النطاق</p>
+        <p class="text-[10px] md:text-xs fog-text uppercase font-bold tracking-widest mb-2 i18n" data-ar="النطاق" data-en="Domain">النطاق</p>
         <p class="text-lg md:text-xl font-extrabold">Cent.ly</p>
       </div>
       <div>
-        <p class="text-[10px] md:text-xs fog-text uppercase font-bold tracking-widest mb-2">البائع</p>
-        <p class="text-lg md:text-xl font-extrabold">مالك فردي</p>
+        <p class="text-[10px] md:text-xs fog-text uppercase font-bold tracking-widest mb-2 i18n" data-ar="البائع" data-en="Seller">البائع</p>
+        <p class="text-lg md:text-xl font-extrabold i18n" data-ar="مالك فردي" data-en="Individual Owner">مالك فردي</p>
       </div>
       <div>
-        <p class="text-[10px] md:text-xs fog-text uppercase font-bold tracking-widest mb-2">طريقة البيع</p>
-        <p class="text-lg md:text-xl font-extrabold">تفاوض مباشر</p>
+        <p class="text-[10px] md:text-xs fog-text uppercase font-bold tracking-widest mb-2 i18n" data-ar="طريقة البيع" data-en="Sale Method">طريقة البيع</p>
+        <p class="text-lg md:text-xl font-extrabold i18n" data-ar="تفاوض مباشر" data-en="Direct Negotiation">تفاوض مباشر</p>
       </div>
       <div>
-        <p class="text-[10px] md:text-xs fog-text uppercase font-bold tracking-widest mb-2">الحالة</p>
-        <p class="text-lg md:text-xl font-extrabold mint-text">متاح الآن</p>
+        <p class="text-[10px] md:text-xs fog-text uppercase font-bold tracking-widest mb-2 i18n" data-ar="الحالة" data-en="Status">الحالة</p>
+        <p class="text-lg md:text-xl font-extrabold mint-text i18n" data-ar="متاح الآن" data-en="Available Now">متاح الآن</p>
       </div>
     </div>
   </div>
@@ -278,23 +285,23 @@
 <section class="max-w-6xl mx-auto px-4 md:px-6 py-14 md:py-18">
   <div class="mb-10 md:mb-12 rise">
     <div class="divider mb-5"></div>
-    <h2 class="text-3xl md:text-5xl font-extrabold">آلية الشراء</h2>
+    <h2 class="text-3xl md:text-5xl font-extrabold i18n" data-ar="آلية الشراء" data-en="How It Works">آلية الشراء</h2>
   </div>
   <div class="grid md:grid-cols-3 gap-5">
     <div class="panel panel-hover p-6 md:p-9 rise d1">
-      <p class="font-mono text-xs mint-text mb-4">الخطوة 01</p>
-      <h4 class="font-extrabold mb-2">قدّم عرضك</h4>
-      <p class="text-sm fog-text">اضغط على زر التواصل وستحصل على وسيلة اتصال مباشرة مع المالك.</p>
+      <p class="font-mono text-xs mint-text mb-4 i18n" data-ar="الخطوة 01" data-en="STEP 01">الخطوة 01</p>
+      <h4 class="font-extrabold mb-2 i18n" data-ar="قدّم عرضك" data-en="Make an Offer">قدّم عرضك</h4>
+      <p class="text-sm fog-text i18n" data-ar="اضغط على زر التواصل وستحصل على وسيلة اتصال مباشرة مع المالك." data-en="Tap the contact button to get a direct way to reach the owner.">اضغط على زر التواصل وستحصل على وسيلة اتصال مباشرة مع المالك.</p>
     </div>
     <div class="panel panel-hover p-6 md:p-9 rise d2">
-      <p class="font-mono text-xs mint-text mb-4">الخطوة 02</p>
-      <h4 class="font-extrabold mb-2">تفاوض مباشر</h4>
-      <p class="text-sm fog-text">يرد المالك شخصيًا لمناقشة السعر والتفاصيل بشفافية كاملة.</p>
+      <p class="font-mono text-xs mint-text mb-4 i18n" data-ar="الخطوة 02" data-en="STEP 02">الخطوة 02</p>
+      <h4 class="font-extrabold mb-2 i18n" data-ar="تفاوض مباشر" data-en="Negotiate Directly">تفاوض مباشر</h4>
+      <p class="text-sm fog-text i18n" data-ar="يرد المالك شخصيًا لمناقشة السعر والتفاصيل بشفافية كاملة." data-en="The owner responds personally to discuss price and details with full transparency.">يرد المالك شخصيًا لمناقشة السعر والتفاصيل بشفافية كاملة.</p>
     </div>
     <div class="panel panel-hover p-6 md:p-9 rise d3">
-      <p class="font-mono text-xs mint-text mb-4">الخطوة 03</p>
-      <h4 class="font-extrabold mb-2">نقل آمن</h4>
-      <p class="text-sm fog-text">يتم نقل ملكية النطاق عبر مسجّل النطاقات الرسمي.</p>
+      <p class="font-mono text-xs mint-text mb-4 i18n" data-ar="الخطوة 03" data-en="STEP 03">الخطوة 03</p>
+      <h4 class="font-extrabold mb-2 i18n" data-ar="نقل آمن" data-en="Secure Transfer">نقل آمن</h4>
+      <p class="text-sm fog-text i18n" data-ar="يتم نقل ملكية النطاق عبر مسجّل النطاقات الرسمي." data-en="Ownership is transferred through the official domain registrar.">يتم نقل ملكية النطاق عبر مسجّل النطاقات الرسمي.</p>
     </div>
   </div>
 </section>
@@ -303,13 +310,13 @@
 <section class="max-w-4xl mx-auto px-4 md:px-6 py-14 md:py-18 text-center">
   <div class="panel p-7 md:p-16 rise">
     <div class="divider mx-auto mb-6"></div>
-    <h2 class="text-2xl md:text-4xl font-extrabold mb-4">مستعد لامتلاك Cent.ly؟</h2>
-    <p class="fog-text mb-8 max-w-md mx-auto">اضغط الزر أدناه لاستلام وسيلة تواصل مباشرة مع المالك عبر واتساب.</p>
+    <h2 class="text-2xl md:text-4xl font-extrabold mb-4 i18n" data-ar="مستعد لامتلاك Cent.ly؟" data-en="Ready to Own Cent.ly?">مستعد لامتلاك Cent.ly؟</h2>
+    <p class="fog-text mb-8 max-w-md mx-auto i18n" data-ar="اضغط الزر أدناه لاستلام وسيلة تواصل مباشرة مع المالك عبر واتساب." data-en="Tap the button below to get a direct way to contact the owner via WhatsApp.">اضغط الزر أدناه لاستلام وسيلة تواصل مباشرة مع المالك عبر واتساب.</p>
 
     <div id="waRevealArea">
       <button onclick="revealWA()" class="btn-mint inline-flex items-center gap-2 px-6 py-3.5 md:px-9 md:py-4 rounded-full text-xs md:text-base">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="shrink-0"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4a8.94 8.94 0 0 0-7.73 13.4L3 21l3.72-1.28a8.9 8.9 0 0 0 5.33 1.72h.01a8.94 8.94 0 0 0 8.93-8.93 8.9 8.9 0 0 0-3.39-6.19ZM12.06 19.9a7.4 7.4 0 0 1-3.77-1.04l-.27-.16-2.79.96.94-2.72-.18-.28a7.45 7.45 0 1 1 6.07 3.24Zm4.08-5.58c-.22-.11-1.31-.65-1.51-.72-.2-.08-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.16-.48.05-1.3-.65-2.15-1.16-3.01-2.63-.23-.39.23-.36.66-1.2.07-.15.04-.28-.03-.4-.07-.11-.6-1.45-.82-1.98-.22-.53-.44-.46-.6-.46-.15-.01-.33-.01-.5-.01-.17 0-.44.06-.68.32-.24.26-.9.88-.9 2.14 0 1.26.92 2.48 1.05 2.65.13.17 1.77 2.72 4.35 3.71 2.14.81 2.57.65 3.03.6.46-.04 1.48-.6 1.68-1.19.2-.58.2-1.08.14-1.19-.06-.1-.22-.16-.44-.27Z"/></svg>
-        اضغط لاستلام العرض عبر واتساب
+        <span class="i18n" data-ar="اضغط لاستلام العرض عبر واتساب" data-en="Tap to Get Contact via WhatsApp">اضغط لاستلام العرض عبر واتساب</span>
       </button>
     </div>
   </div>
@@ -320,7 +327,7 @@
   <div class="text-lg md:text-xl font-extrabold mb-2">
     cent<span class="mint-text">.ly</span>
   </div>
-  <p class="text-xs fog-text">
+  <p class="text-xs fog-text i18n" data-ar="نطاق معروض للبيع من مالكه الفردي المباشر © 2026" data-en="Premium domain listed by its individual owner © 2026">
     نطاق معروض للبيع من مالكه الفردي المباشر © 2026
   </p>
 </footer>
@@ -330,6 +337,29 @@
   function revealWA(){
     var num = ['2','1','8','9','1','8','8','8','3','9','1','8'].join('');
     window.open('https://wa.me/' + num, '_blank');
+  }
+
+  // Language toggle: switches all .i18n elements between Arabic and English,
+  // and flips document direction/lang accordingly.
+  var currentLang = 'ar';
+  function toggleLang(){
+    currentLang = currentLang === 'ar' ? 'en' : 'ar';
+    var els = document.querySelectorAll('.i18n');
+    els.forEach(function(el){
+      var text = el.getAttribute('data-' + currentLang);
+      if(text !== null){ el.textContent = text; }
+    });
+
+    var html = document.documentElement;
+    if(currentLang === 'en'){
+      html.setAttribute('lang', 'en');
+      html.setAttribute('dir', 'ltr');
+      document.getElementById('langBtnLabel').textContent = 'AR';
+    } else {
+      html.setAttribute('lang', 'ar');
+      html.setAttribute('dir', 'rtl');
+      document.getElementById('langBtnLabel').textContent = 'EN';
+    }
   }
 </script>
 
