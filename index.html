@@ -266,6 +266,55 @@
   </div>
 </section>
 
+<!-- ============ Detailed Inquiry Form ============ -->
+<section id="inquiry" class="max-w-3xl mx-auto px-4 md:px-6 py-14 md:py-18">
+  <div class="mb-10 rise text-center">
+    <div class="divider-iris mx-auto mb-5"></div>
+    <h2 class="text-2xl md:text-4xl font-extrabold mb-3 i18n" data-ar="نموذج الاستفسارات" data-en="Inquiry Form">نموذج الاستفسارات</h2>
+    <p class="text-[var(--ink-soft)] max-w-md mx-auto i18n" data-ar="للشراكات، الدعم، أو أي استفسار تفصيلي حول المشروع." data-en="For partnerships, support, or any detailed question about the project.">
+      للشراكات، الدعم، أو أي استفسار تفصيلي حول المشروع.
+    </p>
+  </div>
+
+  <form action="https://formspree.io/f/mwvgglzr" method="POST" class="panel p-6 md:p-12 space-y-5 rise d1">
+    <input type="hidden" name="_subject" value="Cent.ly - New Inquiry">
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <input type="text" name="الاسم الكامل" required
+        placeholder="الاسم الكامل"
+        class="i18n-placeholder border px-5 py-4 text-sm font-medium rounded-lg bg-white/70"
+        style="border-color:var(--border-line)"
+        data-ar-placeholder="الاسم الكامل" data-en-placeholder="Full Name">
+      <input type="email" name="البريد الإلكتروني" required
+        placeholder="البريد الإلكتروني"
+        class="i18n-placeholder border px-5 py-4 text-sm font-medium rounded-lg bg-white/70"
+        style="border-color:var(--border-line)"
+        data-ar-placeholder="البريد الإلكتروني" data-en-placeholder="Email Address">
+    </div>
+
+    <select name="نوع الاستفسار" class="i18n-select w-full border px-5 py-4 text-sm font-medium rounded-lg bg-white/70" style="border-color:var(--border-line)">
+      <option value="شراكة" class="i18n" data-ar="شراكة" data-en="Partnership">شراكة</option>
+      <option value="دعم المشروع" class="i18n" data-ar="دعم المشروع" data-en="Project Support">دعم المشروع</option>
+      <option value="استثمار" class="i18n" data-ar="استثمار" data-en="Investment">استثمار</option>
+      <option value="استفسار عام" class="i18n" data-ar="استفسار عام" data-en="General Inquiry">استفسار عام</option>
+    </select>
+
+    <textarea name="الرسالة" rows="5" required
+      placeholder="اكتب تفاصيل استفسارك هنا..."
+      class="i18n-placeholder w-full border px-5 py-4 text-sm font-medium rounded-lg bg-white/70 resize-none"
+      style="border-color:var(--border-line)"
+      data-ar-placeholder="اكتب تفاصيل استفسارك هنا..." data-en-placeholder="Write the details of your inquiry here..."></textarea>
+
+    <button type="submit" class="btn-iris w-full py-4 rounded-full text-sm i18n" data-ar="إرسال الاستفسار" data-en="Submit Inquiry">
+      إرسال الاستفسار
+    </button>
+
+    <p class="text-xs text-center text-[var(--ink-soft)] i18n" data-ar="ستصل رسالتك مباشرة إلى فريق المشروع." data-en="Your message goes directly to the project team.">
+      ستصل رسالتك مباشرة إلى فريق المشروع.
+    </p>
+  </form>
+</section>
+
 <!-- ============ Footer ============ -->
 <footer class="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-12 text-center border-t" style="border-color:var(--border-line)">
   <div class="text-lg md:text-xl font-extrabold mb-2">
