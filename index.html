@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google" content="notranslate">
 <meta http-equiv="Content-Language" content="ar">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#efe8d9">
 <title>Cent.ly | ادفع وحوّل أموالك حول العالم بعمولة سنت واحد</title>
 <meta name="description" content="Cent.ly — مشروع قيد الإنشاء. ادفع وحوّل أموالك حول العالم بعمولة سنت واحد فقط.">
 
@@ -16,7 +18,6 @@
 <style>
   :root{
     --paper:#efe8d9;
-    --paper-deep:#e6dcc5;
     --ink:#232b3d;
     --ink-soft:#535d75;
     --iris-1:#7c5cff;
@@ -25,13 +26,17 @@
     --border-line:rgba(35,43,61,0.14);
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{
+    scroll-behavior:smooth;
+    color-scheme:light only;
+  }
   body{
     font-family:'Almarai', sans-serif;
+    background-color:var(--paper);
     background:
       radial-gradient(ellipse 700px 400px at 85% 0%, rgba(124,92,255,0.08), transparent),
       var(--paper);
-    color:var(--ink);
+    color:var(--ink) !important;
     min-height:100vh;
     overflow-x:hidden;
   }
@@ -56,10 +61,18 @@
   }
 
   .iris-text{
+    color:var(--iris-1);
     background:linear-gradient(120deg, var(--iris-1), var(--iris-2) 55%, var(--iris-3));
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     background-clip:text;
+  }
+  @supports not (-webkit-background-clip:text){
+    .iris-text{
+      -webkit-text-fill-color:unset;
+      color:var(--iris-1);
+      background:none;
+    }
   }
 
   .btn-iris{
@@ -77,6 +90,7 @@
     border:1.5px solid var(--ink);
     color:var(--ink);
     transition:all .3s ease;
+    background:var(--paper);
   }
   .btn-outline:hover{
     background:var(--ink);
@@ -84,12 +98,9 @@
   }
 
   .rise{
-    opacity:0; transform:translateY(24px);
-    animation:rise .85s cubic-bezier(.2,.8,.2,1) forwards;
+    opacity:1;
   }
-  @keyframes rise{to{opacity:1; transform:translateY(0);}}
-  .d1{animation-delay:.1s;} .d2{animation-delay:.2s;}
-  .d3{animation-delay:.3s;} .d4{animation-delay:.4s;}
+  .d1, .d2, .d3, .d4{opacity:1;}
 
   .divider-iris{
     height:3px; width:64px;
@@ -135,39 +146,81 @@
     font-weight:700;
     color:var(--iris-1);
     animation:coinspin 6s linear infinite;
+    flex-shrink:0;
   }
   @keyframes coinspin{
     0%,100%{transform:rotateY(0deg);}
     50%{transform:rotateY(180deg);}
   }
+
+  /* Payment companies marquee */
+  .marquee-wrap{
+    overflow:hidden;
+    width:100%;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    opacity:0.55;
+  }
+  .marquee-track{
+    display:flex;
+    align-items:center;
+    gap:2.5rem;
+    width:max-content;
+    animation:marquee-scroll 16s linear infinite;
+  }
+  .marquee-track span{
+    white-space:nowrap;
+  }
+  @keyframes marquee-scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .marquee-wrap:hover .marquee-track{
+    animation-play-state:paused;
+  }
+
+  @keyframes blinkCursor{
+    0%, 50%{opacity:1;}
+    51%, 100%{opacity:0;}
+  }
+
+  .typewriter-cursor{
+    display:inline-block;
+    animation:blinkCursor 1s step-end infinite;
+  }
 </style>
 </head>
 <body class="paper-grain">
 
-<!-- ============ Header ============ -->
-<header class="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-8 flex items-center justify-between relative z-10">
-  <div class="text-xl md:text-2xl font-extrabold tracking-wide">
-    cent<span class="iris-text">.ly</span>
-  </div>
-  <button onclick="toggleLang()" id="langBtn" class="btn-outline flex items-center gap-1 px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-bold">
-    <span id="langBtnLabel">EN</span>
-  </button>
-</header>
+<!-- ============ Sticky Header (title stays fixed) ============ -->
+<div class="sticky top-0 z-30 w-full" style="background:rgba(239,232,217,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-line);">
+  <header class="max-w-6xl mx-auto px-4 md:px-6 py-4 md:py-5 flex items-center justify-between">
+    <div class="text-xl md:text-2xl font-extrabold tracking-wide" style="color:var(--ink);">
+      cent<span class="iris-text">.ly</span>
+    </div>
+    <button onclick="toggleLang()" id="langBtn" class="btn-outline flex items-center gap-1 px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-bold">
+      <span id="langBtnLabel">EN</span>
+    </button>
+  </header>
+</div>
 
 <!-- ============ Hero ============ -->
-<section class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-16">
+<section class="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-16">
   <div class="grid md:grid-cols-[1fr_1fr] gap-10 md:gap-14 items-center">
 
     <div class="rise text-center md:text-right">
       <span class="badge-soon inline-block text-xs font-extrabold px-4 py-2 rounded-full mb-6 i18n" data-ar="مشروع قيد الإنشاء" data-en="Project Under Construction">
         مشروع قيد الإنشاء
       </span>
-      <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[1.05] mb-6">
+
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[1.05] mb-7" style="color:var(--ink);">
         cent<span class="iris-text">.</span>ly
       </h1>
-      <p class="text-lg md:text-2xl font-extrabold leading-snug mb-4 i18n" data-ar="ادفع وحوّل أموالك حول العالم" data-en="Pay and transfer your money worldwide">
-        ادفع وحوّل أموالك حول العالم
+
+      <p class="text-lg md:text-2xl font-extrabold leading-snug mb-4 min-h-[1.8em]">
+        <span id="typewriterText"></span><span class="typewriter-cursor iris-text">|</span>
       </p>
+
       <p class="text-base md:text-lg text-[var(--ink-soft)] leading-relaxed mb-9 i18n" data-ar="بعمولة سنت واحد فقط. مدفوعات وتحويلات مالية عالمية، بأبسط وأرخص طريقة ممكنة." data-en="For a one-cent fee. Global payments and money transfers, made as simple and affordable as possible.">
         بعمولة سنت واحد فقط. مدفوعات وتحويلات مالية عالمية، بأبسط وأرخص طريقة ممكنة.
       </p>
@@ -194,7 +247,7 @@
 <!-- ============ Fee Highlight ============ -->
 <section class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
   <div class="panel panel-hover p-8 md:p-12 rise flex flex-col md:flex-row items-center gap-6 md:gap-10 text-center md:text-right">
-    <div class="cent-coin shrink-0">¢</div>
+    <div class="cent-coin">¢</div>
     <div>
       <p class="text-xl md:text-2xl font-extrabold mb-2 i18n" data-ar="عمولة ثابتة: سنت واحد" data-en="Flat Fee: One Cent">عمولة ثابتة: سنت واحد</p>
       <p class="text-sm md:text-base text-[var(--ink-soft)] i18n" data-ar="بغض النظر عن المبلغ أو الوجهة — عمولة واحدة، شفافة، وبسيطة." data-en="Regardless of amount or destination — one transparent, simple fee.">
@@ -292,7 +345,7 @@
         data-ar-placeholder="البريد الإلكتروني" data-en-placeholder="Email Address">
     </div>
 
-    <select name="نوع الاستفسار" class="i18n-select w-full border px-5 py-4 text-sm font-medium rounded-lg bg-white/70" style="border-color:var(--border-line)">
+    <select name="نوع الاستفسار" class="w-full border px-5 py-4 text-sm font-medium rounded-lg bg-white/70" style="border-color:var(--border-line)">
       <option value="شراكة" class="i18n" data-ar="شراكة" data-en="Partnership">شراكة</option>
       <option value="دعم المشروع" class="i18n" data-ar="دعم المشروع" data-en="Project Support">دعم المشروع</option>
       <option value="استثمار" class="i18n" data-ar="استثمار" data-en="Investment">استثمار</option>
@@ -327,6 +380,54 @@
 
 <script>
   var currentLang = 'ar';
+
+  var typewriterPhrases = {
+    ar: ['ادفع أموالك حول العالم', 'حوّل أموالك حول العالم', 'استقبل أموالك حول العالم', 'ادّخر أموالك حول العالم'],
+    en: ['Pay your money worldwide', 'Transfer your money worldwide', 'Receive your money worldwide', 'Save your money worldwide']
+  };
+  var twPhraseIndex = 0;
+  var twCharIndex = 0;
+  var twDeleting = false;
+  var twTimeout = null;
+
+  function typewriterTick(){
+    var el = document.getElementById('typewriterText');
+    if(!el) return;
+    var phrases = typewriterPhrases[currentLang];
+    var current = phrases[twPhraseIndex % phrases.length];
+
+    if(!twDeleting){
+      twCharIndex++;
+      el.textContent = current.slice(0, twCharIndex);
+      if(twCharIndex === current.length){
+        twDeleting = true;
+        twTimeout = setTimeout(typewriterTick, 1500);
+        return;
+      }
+      twTimeout = setTimeout(typewriterTick, 65);
+    } else {
+      twCharIndex--;
+      el.textContent = current.slice(0, twCharIndex);
+      if(twCharIndex === 0){
+        twDeleting = false;
+        twPhraseIndex++;
+        twTimeout = setTimeout(typewriterTick, 300);
+        return;
+      }
+      twTimeout = setTimeout(typewriterTick, 30);
+    }
+  }
+
+  function restartTypewriter(){
+    clearTimeout(twTimeout);
+    twCharIndex = 0;
+    twDeleting = false;
+    twPhraseIndex = 0;
+    var el = document.getElementById('typewriterText');
+    if(el){ el.textContent = ''; }
+    typewriterTick();
+  }
+
   function toggleLang(){
     currentLang = currentLang === 'ar' ? 'en' : 'ar';
 
@@ -350,7 +451,11 @@
       html.setAttribute('dir', 'rtl');
       document.getElementById('langBtnLabel').textContent = 'EN';
     }
+
+    restartTypewriter();
   }
+
+  restartTypewriter();
 </script>
 
 </body>
