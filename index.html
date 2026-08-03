@@ -6,298 +6,270 @@
 <meta name="google" content="notranslate">
 <meta http-equiv="Content-Language" content="ar">
 <meta name="color-scheme" content="light only">
-<meta name="theme-color" content="#efe8d9">
+<meta name="theme-color" content="#0f1115">
 <title>Cent.ly | ادفع وحوّل أموالك حول العالم بعمولة سنت واحد</title>
 <meta name="description" content="Cent.ly — مشروع قيد الإنشاء. ادفع وحوّل أموالك حول العالم بعمولة سنت واحد فقط.">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;500;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;500;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --paper:#efe8d9;
-    --ink:#232b3d;
-    --ink-soft:#535d75;
+    --ink:#0f1115;
+    --ink-soft:#5a5f6b;
+    --paper:#f4f2ee;
+    --line:rgba(15,17,21,0.12);
     --iris-1:#7c5cff;
     --iris-2:#00d9ff;
     --iris-3:#ff6fae;
-    --border-line:rgba(35,43,61,0.14);
   }
-  *{box-sizing:border-box;}
-  html{
-    scroll-behavior:smooth;
-    color-scheme:light only;
-  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; color-scheme:light only;}
   body{
     font-family:'Almarai', sans-serif;
-    background-color:var(--paper);
-    background:
-      radial-gradient(ellipse 700px 400px at 85% 0%, rgba(124,92,255,0.08), transparent),
-      var(--paper);
-    color:var(--ink) !important;
+    background:var(--paper);
+    color:var(--ink);
     min-height:100vh;
     overflow-x:hidden;
   }
   .font-mono{font-family:'IBM Plex Mono', monospace;}
 
-  .paper-grain{
-    background-image:radial-gradient(rgba(35,43,61,0.05) 1px, transparent 1px);
-    background-size:16px 16px;
-  }
+  .mesh-bg{position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none;}
+  .mesh-blob{position:absolute; border-radius:50%; filter:blur(70px); opacity:0.35;}
+  .blob-1{width:44vw; height:44vw; top:-10%; right:-8%; background:var(--iris-1); animation:driftA 22s ease-in-out infinite;}
+  .blob-2{width:38vw; height:38vw; bottom:-12%; left:-10%; background:var(--iris-2); animation:driftB 26s ease-in-out infinite;}
+  .blob-3{width:30vw; height:30vw; top:35%; left:38%; background:var(--iris-3); animation:driftC 30s ease-in-out infinite;}
+  @keyframes driftA{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-6%,8%) scale(1.15);}}
+  @keyframes driftB{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(8%,-6%) scale(1.1);}}
+  @keyframes driftC{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-10%,-10%) scale(0.9);}}
 
-  .panel{
-    background:rgba(255,255,255,0.55);
-    border:1px solid var(--border-line);
-    border-radius:1.1rem;
-    backdrop-filter:blur(3px);
-  }
-  .panel-hover{transition:all .3s cubic-bezier(.2,.8,.2,1);}
-  .panel-hover:hover{
-    transform:translateY(-5px);
-    border-color:rgba(124,92,255,0.35);
-    box-shadow:0 24px 48px -18px rgba(35,43,61,0.16);
-  }
+  .ticker-bar{position:relative; z-index:20; background:var(--ink); color:var(--paper); overflow:hidden;}
+  .ticker-track{display:flex; align-items:center; gap:3rem; width:max-content; padding:0.55rem 0; animation:ticker-scroll 24s linear infinite;}
+  .ticker-track span{white-space:nowrap; font-size:0.72rem; font-weight:700; letter-spacing:0.04em;}
+  @keyframes ticker-scroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
 
-  .iris-text{
-    color:var(--iris-1);
+  .site-header{position:sticky; top:0; z-index:30; background:rgba(244,242,238,0.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .brand{font-weight:800; letter-spacing:-0.01em;}
+  .brand-dot{
     background:linear-gradient(120deg, var(--iris-1), var(--iris-2) 55%, var(--iris-3));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-  }
-  @supports not (-webkit-background-clip:text){
-    .iris-text{
-      -webkit-text-fill-color:unset;
-      color:var(--iris-1);
-      background:none;
-    }
-  }
-
-  .btn-iris{
-    background:linear-gradient(120deg, var(--iris-1), var(--iris-2));
-    color:#ffffff;
-    font-weight:800;
-    transition:all .3s ease;
-  }
-  .btn-iris:hover{
-    box-shadow:0 12px 30px -8px rgba(124,92,255,0.45);
-    transform:translateY(-2px);
-  }
-
-  .btn-outline{
-    border:1.5px solid var(--ink);
-    color:var(--ink);
-    transition:all .3s ease;
-    background:var(--paper);
-  }
-  .btn-outline:hover{
-    background:var(--ink);
-    color:var(--paper);
-  }
-
-  .rise{
-    opacity:1;
-  }
-  .d1, .d2, .d3, .d4{opacity:1;}
-
-  .divider-iris{
-    height:3px; width:64px;
-    background:linear-gradient(120deg, var(--iris-1), var(--iris-2), var(--iris-3));
-    border-radius:2px;
-  }
-
-  .badge-soon{
-    border:1px solid rgba(124,92,255,0.35);
-    background:rgba(124,92,255,0.08);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
     color:var(--iris-1);
   }
 
-  .illustration-frame{
-    position:relative;
-    border-radius:1.3rem;
-    overflow:hidden;
-    border:1px solid var(--border-line);
-  }
-  .illustration-frame::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(180deg, transparent 60%, rgba(239,232,217,0.9) 100%);
-    pointer-events:none;
-  }
+  .btn-outline{border:1.5px solid var(--ink); color:var(--ink); background:transparent; transition:all .25s ease;}
+  .btn-outline:hover{background:var(--ink); color:var(--paper);}
+  .btn-solid{background:var(--ink); color:var(--paper); font-weight:800; transition:all .25s ease;}
+  .btn-solid:hover{transform:translateY(-2px); box-shadow:0 14px 30px -10px rgba(15,17,21,0.35);}
 
-  ::selection{background:var(--iris-1); color:#ffffff;}
+  .diagonal-top{clip-path:polygon(0 4vw, 100% 0, 100% 100%, 0 100%);}
+  .diagonal-bottom{clip-path:polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%);}
+  .diagonal-band{clip-path:polygon(0 4vw, 100% 0, 100% calc(100% - 4vw), 0 100%);}
 
-  .num-mono{
-    font-family:'IBM Plex Mono', monospace;
-    font-weight:700;
-  }
-
-  .cent-coin{
-    width:48px; height:48px;
-    border-radius:50%;
-    border:2px solid var(--iris-1);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'IBM Plex Mono', monospace;
-    font-weight:700;
+  .kinetic-cent{
+    font-family:'IBM Plex Mono', monospace; font-weight:700; line-height:0.9;
+    background:linear-gradient(120deg, var(--iris-1), var(--iris-2) 50%, var(--iris-3));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
     color:var(--iris-1);
-    animation:coinspin 6s linear infinite;
-    flex-shrink:0;
-  }
-  @keyframes coinspin{
-    0%,100%{transform:rotateY(0deg);}
-    50%{transform:rotateY(180deg);}
   }
 
-  /* Payment companies marquee */
-  .marquee-wrap{
-    overflow:hidden;
-    width:100%;
+  .counter-num{font-family:'IBM Plex Mono', monospace; font-weight:700;}
+
+  .logo-marquee-wrap{
+    overflow:hidden; width:100%;
     -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
     mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-    opacity:0.55;
   }
-  .marquee-track{
-    display:flex;
-    align-items:center;
-    gap:2.5rem;
-    width:max-content;
-    animation:marquee-scroll 16s linear infinite;
-  }
-  .marquee-track span{
-    white-space:nowrap;
-  }
-  @keyframes marquee-scroll{
-    from{transform:translateX(0);}
-    to{transform:translateX(-50%);}
-  }
-  .marquee-wrap:hover .marquee-track{
-    animation-play-state:paused;
-  }
+  .logo-marquee-track{display:flex; align-items:center; gap:3.5rem; width:max-content; animation:logo-scroll 20s linear infinite;}
+  .logo-marquee-track span{white-space:nowrap; font-weight:800; opacity:0.55;}
+  @keyframes logo-scroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+  .logo-marquee-wrap:hover .logo-marquee-track{animation-play-state:paused;}
 
-  @keyframes blinkCursor{
-    0%, 50%{opacity:1;}
-    51%, 100%{opacity:0;}
-  }
+  .edge-card{background:#ffffff; border:1px solid var(--line); transition:all .3s cubic-bezier(.2,.8,.2,1);}
+  .edge-card:hover{transform:translateY(-6px); border-color:rgba(124,92,255,0.4); box-shadow:0 24px 48px -20px rgba(15,17,21,0.18);}
 
-  .typewriter-cursor{
-    display:inline-block;
-    animation:blinkCursor 1s step-end infinite;
+  input:focus, textarea:focus, select:focus{
+    outline:none; border-color:var(--iris-1) !important; box-shadow:0 0 0 3px rgba(124,92,255,0.15);
   }
+  ::selection{background:var(--iris-1); color:#ffffff;}
+
+  .pulse-dot{width:8px; height:8px; border-radius:50%; background:#22c55e; display:inline-block; animation:pulseDot 1.8s ease-in-out infinite;}
+  @keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.5);} 50%{box-shadow:0 0 0 6px rgba(34,197,94,0);}}
+
+  .typewriter-cursor{display:inline-block; animation:blinkCursor 1s step-end infinite;}
+  @keyframes blinkCursor{0%,50%{opacity:1;} 51%,100%{opacity:0;}}
 </style>
 </head>
-<body class="paper-grain">
+<body>
 
-<!-- ============ Sticky Header (title stays fixed) ============ -->
-<div class="sticky top-0 z-30 w-full" style="background:rgba(239,232,217,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-line);">
+<!-- ============ Moving Mesh Background ============ -->
+<div class="mesh-bg">
+  <div class="mesh-blob blob-1"></div>
+  <div class="mesh-blob blob-2"></div>
+  <div class="mesh-blob blob-3"></div>
+</div>
+
+<!-- ============ Top Ticker ============ -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <span>● PROJECT STATUS: UNDER CONSTRUCTION</span>
+    <span>⌁ FLAT FEE: 1¢ PER TRANSFER</span>
+    <span>◐ GLOBAL COVERAGE — EVERY COUNTRY, EVERY CURRENCY</span>
+    <span>◆ NO HIDDEN FEES · NO COMPLEXITY</span>
+    <span aria-hidden="true">● PROJECT STATUS: UNDER CONSTRUCTION</span>
+    <span aria-hidden="true">⌁ FLAT FEE: 1¢ PER TRANSFER</span>
+    <span aria-hidden="true">◐ GLOBAL COVERAGE — EVERY COUNTRY, EVERY CURRENCY</span>
+    <span aria-hidden="true">◆ NO HIDDEN FEES · NO COMPLEXITY</span>
+  </div>
+</div>
+
+<!-- ============ Header ============ -->
+<div class="site-header relative">
   <header class="max-w-6xl mx-auto px-4 md:px-6 py-4 md:py-5 flex items-center justify-between">
-    <div class="text-xl md:text-2xl font-extrabold tracking-wide" style="color:var(--ink);">
-      cent<span class="iris-text">.ly</span>
+    <div class="brand text-xl md:text-2xl">
+      cent<span class="brand-dot">.ly</span>
     </div>
-    <button onclick="toggleLang()" id="langBtn" class="btn-outline flex items-center gap-1 px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-bold">
-      <span id="langBtnLabel">EN</span>
-    </button>
+    <div class="flex items-center gap-2 md:gap-3">
+      <span class="hidden sm:flex items-center gap-2 text-xs font-bold text-[var(--ink-soft)]">
+        <span class="pulse-dot"></span>
+        <span class="i18n" data-ar="قيد الإنشاء" data-en="Under Construction">قيد الإنشاء</span>
+      </span>
+      <button onclick="toggleLang()" id="langBtn" class="btn-outline flex items-center gap-1 px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-bold">
+        <span id="langBtnLabel">EN</span>
+      </button>
+    </div>
   </header>
 </div>
 
 <!-- ============ Hero ============ -->
-<section class="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-16">
-  <div class="grid md:grid-cols-[1fr_1fr] gap-10 md:gap-14 items-center">
-
-    <div class="rise text-center md:text-right">
-      <span class="badge-soon inline-block text-xs font-extrabold px-4 py-2 rounded-full mb-6 i18n" data-ar="مشروع قيد الإنشاء" data-en="Project Under Construction">
-        مشروع قيد الإنشاء
-      </span>
-
-      <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[1.05] mb-7" style="color:var(--ink);">
-        cent<span class="iris-text">.</span>ly
-      </h1>
-
-      <p class="text-lg md:text-2xl font-extrabold leading-snug mb-4 min-h-[1.8em]">
-        <span id="typewriterText"></span><span class="typewriter-cursor iris-text">|</span>
-      </p>
-
-      <p class="text-base md:text-lg text-[var(--ink-soft)] leading-relaxed mb-9 i18n" data-ar="بعمولة سنت واحد فقط. مدفوعات وتحويلات مالية عالمية، بأبسط وأرخص طريقة ممكنة." data-en="For a one-cent fee. Global payments and money transfers, made as simple and affordable as possible.">
-        بعمولة سنت واحد فقط. مدفوعات وتحويلات مالية عالمية، بأبسط وأرخص طريقة ممكنة.
-      </p>
-
-      <div class="flex flex-wrap gap-3 md:gap-4 justify-center md:justify-start">
-        <span class="btn-iris flex items-center gap-2 px-6 py-3.5 md:px-8 md:py-4 rounded-full text-xs md:text-sm cursor-default">
-          <span class="i18n" data-ar="قريبًا" data-en="Coming Soon">قريبًا</span>
-        </span>
-        <a href="#notify" class="btn-outline px-6 py-3.5 md:px-8 md:py-4 rounded-full text-xs md:text-sm font-bold i18n" data-ar="كن أول من يعلم" data-en="Be First to Know">
-          كن أول من يعلم
-        </a>
-      </div>
-    </div>
-
-    <div class="rise d1">
-      <div class="illustration-frame">
-        <img src="cent-ly-illustration.webp" alt="Cent.ly illustration" class="w-full object-cover">
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============ Fee Highlight ============ -->
-<section class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
-  <div class="panel panel-hover p-8 md:p-12 rise flex flex-col md:flex-row items-center gap-6 md:gap-10 text-center md:text-right">
-    <div class="cent-coin">¢</div>
-    <div>
-      <p class="text-xl md:text-2xl font-extrabold mb-2 i18n" data-ar="عمولة ثابتة: سنت واحد" data-en="Flat Fee: One Cent">عمولة ثابتة: سنت واحد</p>
-      <p class="text-sm md:text-base text-[var(--ink-soft)] i18n" data-ar="بغض النظر عن المبلغ أو الوجهة — عمولة واحدة، شفافة، وبسيطة." data-en="Regardless of amount or destination — one transparent, simple fee.">
-        بغض النظر عن المبلغ أو الوجهة — عمولة واحدة، شفافة، وبسيطة.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ Why ============ -->
-<section class="max-w-6xl mx-auto px-4 md:px-6 py-14 md:py-18">
-  <div class="mb-10 md:mb-12 rise">
-    <div class="divider-iris mb-5 mx-auto md:mx-0"></div>
-    <h2 class="text-3xl md:text-5xl font-extrabold mb-3 text-center md:text-right i18n" data-ar="لماذا Cent.ly؟" data-en="Why Cent.ly?">لماذا Cent.ly؟</h2>
-    <p class="text-[var(--ink-soft)] max-w-xl mx-auto md:mx-0 text-center md:text-right i18n" data-ar="نبني وسيلة مدفوعات عالمية تكسر حاجز الرسوم المرتفعة والتعقيد." data-en="We're building a global payments tool that breaks the barrier of high fees and complexity.">
-      نبني وسيلة مدفوعات عالمية تكسر حاجز الرسوم المرتفعة والتعقيد.
+<section class="relative z-10 max-w-6xl mx-auto px-4 md:px-6 pt-14 md:pt-24 pb-20 md:pb-28">
+  <div class="text-center md:text-right max-w-3xl md:mr-0 md:ml-auto">
+    <p class="font-mono text-xs md:text-sm font-bold tracking-widest text-[var(--ink-soft)] mb-5 i18n" data-ar="مشروع مالي عالمي · قيد البناء" data-en="A GLOBAL FINANCIAL PROJECT · IN THE MAKING">
+      مشروع مالي عالمي · قيد البناء
     </p>
+
+    <h1 class="text-6xl sm:text-7xl md:text-8xl font-extrabold leading-[0.95] mb-6" style="color:var(--ink);">
+      cent<span class="brand-dot">.</span>ly
+    </h1>
+
+    <p class="text-xl md:text-3xl font-extrabold leading-snug mb-6 min-h-[1.6em]">
+      <span id="typewriterText"></span><span class="typewriter-cursor brand-dot">|</span>
+    </p>
+
+    <p class="text-base md:text-lg text-[var(--ink-soft)] leading-relaxed mb-10 max-w-xl mx-auto md:mr-0 md:ml-auto i18n" data-ar="بعمولة سنت واحد فقط. مدفوعات وتحويلات مالية عالمية، بأبسط وأرخص طريقة ممكنة." data-en="For a one-cent fee. Global payments and money transfers, made as simple and affordable as possible.">
+      بعمولة سنت واحد فقط. مدفوعات وتحويلات مالية عالمية، بأبسط وأرخص طريقة ممكنة.
+    </p>
+
+    <div class="flex flex-wrap gap-3 md:gap-4 justify-center md:justify-start">
+      <a href="#notify" class="btn-solid px-7 py-3.5 md:px-9 md:py-4 rounded-full text-xs md:text-sm i18n" data-ar="كن أول من يعلم" data-en="Be First to Know">
+        كن أول من يعلم
+      </a>
+      <a href="#about" class="btn-outline px-7 py-3.5 md:px-9 md:py-4 rounded-full text-xs md:text-sm font-bold i18n" data-ar="اكتشف المشروع" data-en="Discover the Project">
+        اكتشف المشروع
+      </a>
+    </div>
   </div>
 
-  <div class="grid md:grid-cols-3 gap-5">
-    <div class="panel panel-hover p-6 md:p-8 rise d1 text-center md:text-right">
-      <p class="num-mono text-3xl iris-text mb-4">01</p>
-      <h3 class="font-extrabold text-lg mb-2 i18n" data-ar="رسوم منخفضة جدًا" data-en="Ultra-Low Fees">رسوم منخفضة جدًا</h3>
-      <p class="text-sm text-[var(--ink-soft)] leading-relaxed i18n" data-ar="سنت واحد فقط لكل تحويل، بدلًا من نسب مئوية مرتفعة تأكل من أموالك." data-en="Just one cent per transfer, instead of high percentage cuts eating into your money.">
-        سنت واحد فقط لكل تحويل، بدلًا من نسب مئوية مرتفعة تأكل من أموالك.
-      </p>
-    </div>
-    <div class="panel panel-hover p-6 md:p-8 rise d2 text-center md:text-right">
-      <p class="num-mono text-3xl iris-text mb-4">02</p>
-      <h3 class="font-extrabold text-lg mb-2 i18n" data-ar="تحويلات عالمية" data-en="Global Transfers">تحويلات عالمية</h3>
-      <p class="text-sm text-[var(--ink-soft)] leading-relaxed i18n" data-ar="أرسل واستقبل الأموال حول العالم دون تعقيدات البنوك التقليدية." data-en="Send and receive money around the world without traditional banking complications.">
-        أرسل واستقبل الأموال حول العالم دون تعقيدات البنوك التقليدية.
-      </p>
-    </div>
-    <div class="panel panel-hover p-6 md:p-8 rise d3 text-center md:text-right">
-      <p class="num-mono text-3xl iris-text mb-4">03</p>
-      <h3 class="font-extrabold text-lg mb-2 i18n" data-ar="بساطة وشفافية" data-en="Simple & Transparent">بساطة وشفافية</h3>
-      <p class="text-sm text-[var(--ink-soft)] leading-relaxed i18n" data-ar="لا رسوم خفية، لا تعقيد. فقط ادفع وحوّل، بثقة تامة." data-en="No hidden fees, no complexity. Just pay and transfer, with full confidence.">
-        لا رسوم خفية، لا تعقيد. فقط ادفع وحوّل، بثقة تامة.
-      </p>
+  <div class="mt-16 md:mt-20 flex justify-center">
+    <div class="kinetic-cent text-[7rem] sm:text-[9rem] md:text-[13rem] select-none">¢</div>
+  </div>
+</section>
+
+<!-- ============ Illustration Band ============ -->
+<section class="relative z-10 diagonal-band" style="background:var(--ink); margin-top:-4vw; padding-top:8vw; padding-bottom:8vw;">
+  <div class="max-w-5xl mx-auto px-4 md:px-6">
+    <div class="rounded-2xl overflow-hidden border" style="border-color:rgba(244,242,238,0.15);">
+      <img src="cent-ly-illustration.webp" alt="Cent.ly illustration" class="w-full object-cover">
     </div>
   </div>
 </section>
 
-<!-- ============ Notify Form ============ -->
-<section id="notify" class="max-w-3xl mx-auto px-4 md:px-6 py-14 md:py-18 text-center">
-  <div class="panel p-8 md:p-16 rise">
-    <div class="divider-iris mx-auto mb-6"></div>
-    <h2 class="text-2xl md:text-4xl font-extrabold mb-4 i18n" data-ar="كن أول من يعلم عند الإطلاق" data-en="Be First to Know at Launch">كن أول من يعلم عند الإطلاق</h2>
-    <p class="text-[var(--ink-soft)] mb-8 max-w-md mx-auto i18n" data-ar="المشروع قيد الإنشاء حاليًا. اترك بريدك لتصلك رسالة فور الإطلاق." data-en="The project is currently under construction. Leave your email to be notified at launch.">
+<!-- ============ Live Counters ============ -->
+<section class="relative z-10 max-w-6xl mx-auto px-4 md:px-6 pt-16 md:pt-20 pb-10 md:pb-14">
+  <div class="grid grid-cols-3 gap-3 md:gap-6">
+    <div class="edge-card rounded-xl p-5 md:p-8 text-center">
+      <p class="counter-num text-3xl md:text-5xl brand-dot mb-1" data-target="1">0¢</p>
+      <p class="text-[10px] md:text-xs text-[var(--ink-soft)] font-bold uppercase tracking-wide i18n" data-ar="عمولة التحويل" data-en="Transfer Fee">عمولة التحويل</p>
+    </div>
+    <div class="edge-card rounded-xl p-5 md:p-8 text-center">
+      <p class="counter-num text-3xl md:text-5xl brand-dot mb-1" data-target="190">0+</p>
+      <p class="text-[10px] md:text-xs text-[var(--ink-soft)] font-bold uppercase tracking-wide i18n" data-ar="دولة مستهدفة" data-en="Target Countries">دولة مستهدفة</p>
+    </div>
+    <div class="edge-card rounded-xl p-5 md:p-8 text-center">
+      <p class="counter-num text-3xl md:text-5xl brand-dot mb-1" data-target="24">0/7</p>
+      <p class="text-[10px] md:text-xs text-[var(--ink-soft)] font-bold uppercase tracking-wide i18n" data-ar="تحويلات مستمرة" data-en="Always-On Transfers">تحويلات مستمرة</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Logo Marquee ============ -->
+<section class="relative z-10 max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-10">
+  <p class="text-center text-[10px] md:text-xs font-bold uppercase tracking-widest text-[var(--ink-soft)] mb-6 i18n" data-ar="نبني في نفس عالم أكبر شركات الدفع العالمية" data-en="Building in the same world as the world's leading payment companies">
+    نبني في نفس عالم أكبر شركات الدفع العالمية
+  </p>
+  <div class="logo-marquee-wrap">
+    <div class="logo-marquee-track">
+      <span style="font-style:italic;">VISA</span>
+      <span>Mastercard</span>
+      <span>PayPal</span>
+      <span>stripe</span>
+      <span>Wise</span>
+      <span>Google Pay</span>
+      <span>Apple Pay</span>
+      <span style="font-style:italic;" aria-hidden="true">VISA</span>
+      <span aria-hidden="true">Mastercard</span>
+      <span aria-hidden="true">PayPal</span>
+      <span aria-hidden="true">stripe</span>
+      <span aria-hidden="true">Wise</span>
+      <span aria-hidden="true">Google Pay</span>
+      <span aria-hidden="true">Apple Pay</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ About / Why (asymmetric) ============ -->
+<section id="about" class="relative z-10 max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
+  <div class="grid md:grid-cols-[0.7fr_1.3fr] gap-8 md:gap-14 items-start">
+    <div class="text-center md:text-right">
+      <p class="font-mono text-xs font-bold text-[var(--ink-soft)] mb-3">◆ 01 — 03</p>
+      <h2 class="text-3xl md:text-5xl font-extrabold leading-tight i18n" data-ar="لماذا Cent.ly؟" data-en="Why Cent.ly?">لماذا Cent.ly؟</h2>
+    </div>
+
+    <div class="space-y-6 md:space-y-8">
+      <div class="edge-card rounded-xl p-6 md:p-8 flex flex-col md:flex-row gap-4 md:gap-6 items-start text-center md:text-right">
+        <p class="font-mono text-2xl brand-dot shrink-0 mx-auto md:mx-0">01</p>
+        <div>
+          <h3 class="font-extrabold text-lg mb-1 i18n" data-ar="رسوم منخفضة جدًا" data-en="Ultra-Low Fees">رسوم منخفضة جدًا</h3>
+          <p class="text-sm text-[var(--ink-soft)] leading-relaxed i18n" data-ar="سنت واحد فقط لكل تحويل، بدلًا من نسب مئوية مرتفعة تأكل من أموالك." data-en="Just one cent per transfer, instead of high percentage cuts eating into your money.">سنت واحد فقط لكل تحويل، بدلًا من نسب مئوية مرتفعة تأكل من أموالك.</p>
+        </div>
+      </div>
+
+      <div class="edge-card rounded-xl p-6 md:p-8 flex flex-col md:flex-row gap-4 md:gap-6 items-start text-center md:text-right">
+        <p class="font-mono text-2xl brand-dot shrink-0 mx-auto md:mx-0">02</p>
+        <div>
+          <h3 class="font-extrabold text-lg mb-1 i18n" data-ar="تحويلات عالمية" data-en="Global Transfers">تحويلات عالمية</h3>
+          <p class="text-sm text-[var(--ink-soft)] leading-relaxed i18n" data-ar="أرسل واستقبل الأموال حول العالم دون تعقيدات البنوك التقليدية." data-en="Send and receive money around the world without traditional banking complications.">أرسل واستقبل الأموال حول العالم دون تعقيدات البنوك التقليدية.</p>
+        </div>
+      </div>
+
+      <div class="edge-card rounded-xl p-6 md:p-8 flex flex-col md:flex-row gap-4 md:gap-6 items-start text-center md:text-right">
+        <p class="font-mono text-2xl brand-dot shrink-0 mx-auto md:mx-0">03</p>
+        <div>
+          <h3 class="font-extrabold text-lg mb-1 i18n" data-ar="بساطة وشفافية" data-en="Simple & Transparent">بساطة وشفافية</h3>
+          <p class="text-sm text-[var(--ink-soft)] leading-relaxed i18n" data-ar="لا رسوم خفية، لا تعقيد. فقط ادفع وحوّل، بثقة تامة." data-en="No hidden fees, no complexity. Just pay and transfer, with full confidence.">لا رسوم خفية، لا تعقيد. فقط ادفع وحوّل، بثقة تامة.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Notify Form (dark diagonal band) ============ -->
+<section id="notify" class="relative z-10 diagonal-top" style="background:var(--ink); margin-top:-2vw; padding-top:8vw;">
+  <div class="max-w-3xl mx-auto px-4 md:px-6 pb-16 md:pb-20 text-center" style="color:var(--paper);">
+    <p class="font-mono text-xs font-bold tracking-widest opacity-60 mb-4 i18n" data-ar="القائمة المبكرة" data-en="EARLY ACCESS LIST">القائمة المبكرة</p>
+    <h2 class="text-3xl md:text-5xl font-extrabold mb-4 i18n" data-ar="كن أول من يعلم عند الإطلاق" data-en="Be First to Know at Launch">كن أول من يعلم عند الإطلاق</h2>
+    <p class="opacity-70 mb-8 max-w-md mx-auto i18n" data-ar="المشروع قيد الإنشاء حاليًا. اترك بريدك لتصلك رسالة فور الإطلاق." data-en="The project is currently under construction. Leave your email to be notified at launch.">
       المشروع قيد الإنشاء حاليًا. اترك بريدك لتصلك رسالة فور الإطلاق.
     </p>
 
@@ -305,47 +277,47 @@
       <input type="hidden" name="_subject" value="Cent.ly - Notify Me Signup">
       <input type="email" name="Email" required
         placeholder="بريدك الإلكتروني"
-        class="i18n-placeholder flex-1 border px-5 py-3.5 text-sm font-medium rounded-full bg-white/70"
-        style="border-color:var(--border-line)"
+        class="i18n-placeholder flex-1 border px-5 py-3.5 text-sm font-medium rounded-full bg-white/10 text-white placeholder-white/50"
+        style="border-color:rgba(244,242,238,0.25)"
         data-ar-placeholder="بريدك الإلكتروني" data-en-placeholder="Your email address">
-      <button type="submit" class="btn-iris px-7 py-3.5 rounded-full text-sm i18n" data-ar="أعلمني" data-en="Notify Me">
+      <button type="submit" class="px-7 py-3.5 rounded-full text-sm font-extrabold i18n" style="background:linear-gradient(120deg, var(--iris-1), var(--iris-2));" data-ar="أعلمني" data-en="Notify Me">
         أعلمني
       </button>
     </form>
 
-    <p class="text-xs text-[var(--ink-soft)] mt-6 i18n" data-ar="مهتم بالشراكة أو دعم المشروع؟ راسلنا على نفس البريد أعلاه." data-en="Interested in partnership or supporting the project? Reach out via the same form above.">
+    <p class="text-xs opacity-60 mt-6 i18n" data-ar="مهتم بالشراكة أو دعم المشروع؟ راسلنا على نفس البريد أعلاه." data-en="Interested in partnership or supporting the project? Reach out via the same form above.">
       مهتم بالشراكة أو دعم المشروع؟ راسلنا على نفس البريد أعلاه.
     </p>
   </div>
 </section>
 
 <!-- ============ Detailed Inquiry Form ============ -->
-<section id="inquiry" class="max-w-3xl mx-auto px-4 md:px-6 py-14 md:py-18">
-  <div class="mb-10 rise text-center">
-    <div class="divider-iris mx-auto mb-5"></div>
+<section id="inquiry" class="relative z-10 max-w-3xl mx-auto px-4 md:px-6 py-16 md:py-20">
+  <div class="mb-10 text-center">
+    <p class="font-mono text-xs font-bold text-[var(--ink-soft)] mb-3">◆ CONTACT</p>
     <h2 class="text-2xl md:text-4xl font-extrabold mb-3 i18n" data-ar="نموذج الاستفسارات" data-en="Inquiry Form">نموذج الاستفسارات</h2>
     <p class="text-[var(--ink-soft)] max-w-md mx-auto i18n" data-ar="للشراكات، الدعم، أو أي استفسار تفصيلي حول المشروع." data-en="For partnerships, support, or any detailed question about the project.">
       للشراكات، الدعم، أو أي استفسار تفصيلي حول المشروع.
     </p>
   </div>
 
-  <form action="https://formspree.io/f/mwvgglzr" method="POST" class="panel p-6 md:p-12 space-y-5 rise d1">
+  <form action="https://formspree.io/f/mwvgglzr" method="POST" class="edge-card rounded-2xl p-6 md:p-12 space-y-5">
     <input type="hidden" name="_subject" value="Cent.ly - New Inquiry">
 
     <div class="grid md:grid-cols-2 gap-5">
       <input type="text" name="الاسم الكامل" required
         placeholder="الاسم الكامل"
-        class="i18n-placeholder border px-5 py-4 text-sm font-medium rounded-lg bg-white/70"
-        style="border-color:var(--border-line)"
+        class="i18n-placeholder border px-5 py-4 text-sm font-medium rounded-lg"
+        style="border-color:var(--line)"
         data-ar-placeholder="الاسم الكامل" data-en-placeholder="Full Name">
       <input type="email" name="البريد الإلكتروني" required
         placeholder="البريد الإلكتروني"
-        class="i18n-placeholder border px-5 py-4 text-sm font-medium rounded-lg bg-white/70"
-        style="border-color:var(--border-line)"
+        class="i18n-placeholder border px-5 py-4 text-sm font-medium rounded-lg"
+        style="border-color:var(--line)"
         data-ar-placeholder="البريد الإلكتروني" data-en-placeholder="Email Address">
     </div>
 
-    <select name="نوع الاستفسار" class="w-full border px-5 py-4 text-sm font-medium rounded-lg bg-white/70" style="border-color:var(--border-line)">
+    <select name="نوع الاستفسار" class="w-full border px-5 py-4 text-sm font-medium rounded-lg" style="border-color:var(--line)">
       <option value="شراكة" class="i18n" data-ar="شراكة" data-en="Partnership">شراكة</option>
       <option value="دعم المشروع" class="i18n" data-ar="دعم المشروع" data-en="Project Support">دعم المشروع</option>
       <option value="استثمار" class="i18n" data-ar="استثمار" data-en="Investment">استثمار</option>
@@ -354,11 +326,11 @@
 
     <textarea name="الرسالة" rows="5" required
       placeholder="اكتب تفاصيل استفسارك هنا..."
-      class="i18n-placeholder w-full border px-5 py-4 text-sm font-medium rounded-lg bg-white/70 resize-none"
-      style="border-color:var(--border-line)"
+      class="i18n-placeholder w-full border px-5 py-4 text-sm font-medium rounded-lg resize-none"
+      style="border-color:var(--line)"
       data-ar-placeholder="اكتب تفاصيل استفسارك هنا..." data-en-placeholder="Write the details of your inquiry here..."></textarea>
 
-    <button type="submit" class="btn-iris w-full py-4 rounded-full text-sm i18n" data-ar="إرسال الاستفسار" data-en="Submit Inquiry">
+    <button type="submit" class="btn-solid w-full py-4 rounded-full text-sm i18n" data-ar="إرسال الاستفسار" data-en="Submit Inquiry">
       إرسال الاستفسار
     </button>
 
@@ -369,9 +341,9 @@
 </section>
 
 <!-- ============ Footer ============ -->
-<footer class="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-12 text-center border-t" style="border-color:var(--border-line)">
-  <div class="text-lg md:text-xl font-extrabold mb-2">
-    cent<span class="iris-text">.ly</span>
+<footer class="relative z-10 max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-12 text-center border-t" style="border-color:var(--line)">
+  <div class="brand text-lg md:text-xl mb-2">
+    cent<span class="brand-dot">.ly</span>
   </div>
   <p class="text-xs text-[var(--ink-soft)] i18n" data-ar="مشروع قيد الإنشاء © 2026" data-en="Project under construction © 2026">
     مشروع قيد الإنشاء © 2026
@@ -385,10 +357,7 @@
     ar: ['ادفع أموالك حول العالم', 'حوّل أموالك حول العالم', 'استقبل أموالك حول العالم', 'ادّخر أموالك حول العالم'],
     en: ['Pay your money worldwide', 'Transfer your money worldwide', 'Receive your money worldwide', 'Save your money worldwide']
   };
-  var twPhraseIndex = 0;
-  var twCharIndex = 0;
-  var twDeleting = false;
-  var twTimeout = null;
+  var twPhraseIndex = 0, twCharIndex = 0, twDeleting = false, twTimeout = null;
 
   function typewriterTick(){
     var el = document.getElementById('typewriterText');
@@ -420,12 +389,28 @@
 
   function restartTypewriter(){
     clearTimeout(twTimeout);
-    twCharIndex = 0;
-    twDeleting = false;
-    twPhraseIndex = 0;
+    twCharIndex = 0; twDeleting = false; twPhraseIndex = 0;
     var el = document.getElementById('typewriterText');
     if(el){ el.textContent = ''; }
     typewriterTick();
+  }
+
+  function animateCounters(){
+    document.querySelectorAll('.counter-num').forEach(function(el){
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      var suffix = el.textContent.replace(/^[0-9]+/, '');
+      var duration = 1200;
+      var startTime = null;
+      function step(ts){
+        if(!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var value = Math.floor(progress * target);
+        el.textContent = value + suffix;
+        if(progress < 1){ requestAnimationFrame(step); }
+        else { el.textContent = target + suffix; }
+      }
+      requestAnimationFrame(step);
+    });
   }
 
   function toggleLang(){
@@ -456,6 +441,7 @@
   }
 
   restartTypewriter();
+  animateCounters();
 </script>
 
 </body>
